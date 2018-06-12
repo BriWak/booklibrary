@@ -1,0 +1,14 @@
+@(books:List[String])
+
+@main("Welcome to the library!") {
+  <h1>Welcome to the library!</h1>
+    <h2>List of books available:</h2>
+
+<p>
+  @for(b <- books) {
+<li>@b</li>
+}
+
+</p>
+
+}

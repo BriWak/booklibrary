@@ -1,22 +1,21 @@
 package views
 
-import controllers.HomeController
+import org.jsoup.Jsoup
 import org.scalatestplus.play._
 import org.scalatestplus.play.guice._
-import play.api.test._
+import play.api.inject.guice.GuiceApplicationBuilder
 import play.api.test.Helpers._
-import org.jsoup.Jsoup
-import play.api.mvc.Result
+import play.api.test._
 
-import scala.concurrent.Future
+class BookSpec extends PlaySpec with GuiceOneAppPerTest with Injecting {
 
-class IndexSpec extends PlaySpec with GuiceOneAppPerTest with Injecting {
+  val application = new GuiceApplicationBuilder().build
+  val request = FakeRequest(GET, "/books").withHeaders("Host" -> "localhost")
+  val home = route(application, request).get
 
-  val controller = new HomeController(stubControllerComponents())
-  val home = controller.index().apply(FakeRequest(GET, "/"))
   val doc = Jsoup.parse(contentAsString(home)).body()
 
-  "Index" should {
+  "Books" should {
 
     "have an H1 title" in {
       doc.select("h1").text mustBe "Welcome to the library!"
