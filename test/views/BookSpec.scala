@@ -30,7 +30,7 @@ class BookSpec extends PlaySpec with GuiceOneAppPerTest with Injecting {
     }
 
     "check that a second book is on the index page" in {
-      contentAsString(home) must include ("The Shining, Stephen King, Thiller, 1444720724")
+      contentAsString(home) must include ("The Shining, Stephen King, Thriller, 1444720724")
     }
 
 
