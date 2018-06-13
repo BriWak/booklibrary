@@ -26,13 +26,19 @@ class BookSpec extends PlaySpec with GuiceOneAppPerTest with Injecting {
     }
 
     "check that a book is on the index page" in {
-      contentAsString(home) must include ("Jurrasic Park, Michael Crichton, Science Fiction, 1784752223")
+      doc.getElementsByTag("li").text must include ("Jurrasic Park, Michael Crichton, Science Fiction, 1784752223")
     }
 
     "check that a second book is on the index page" in {
-      contentAsString(home) must include ("The Shining, Stephen King, Thriller, 1444720724")
+      doc.getElementsByTag("li").text must include ("The Shining, Stephen King, Thriller, 1444720724")
+    }
+    "check that the first book is a link" in {
+      doc.getElementById("1784752223").text mustBe "Jurrasic Park"
     }
 
+    "check that the second book is a link" in {
+      doc.getElementById("1444720724").text mustBe "The Shining"
+    }
 
   }
 }

@@ -1,4 +1,4 @@
-@(books:List[String])
+@(books:List[Book])
 
 @main("Welcome to the library!") {
   <h1>Welcome to the library!</h1>
@@ -6,7 +6,7 @@
 
 <p>
   @for(b <- books) {
-<li>@b</li>
+<li><a id=@b.isbn href=@b.isbn>@b.title</a>, @b.author, @b.genre, @b.isbn</li>
 }
 
 </p>
