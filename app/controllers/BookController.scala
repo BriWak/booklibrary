@@ -15,6 +15,6 @@ class BookController @Inject()(bookService: BookService)(cc: ControllerComponent
   def bookDetails(isbn: String) = Action {
     val book = bookService.book(isbn)
 
-    Ok(views.html.bookdetails(isbn))
+    Ok(views.html.bookdetails(book))
   }
 }
