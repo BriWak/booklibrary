@@ -6,7 +6,7 @@
 
 <p>
   @for(b <- books) {
-<li><a id=@b.isbn href=@b.isbn>@b.title</a>, @b.author, @b.genre, @b.isbn</li>
+<li><a id=@b.isbn href=bookdetails/@b.isbn>@b.title</a>, @b.author, @b.genre, @b.isbn</li>
 }
 
 </p>

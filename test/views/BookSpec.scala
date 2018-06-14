@@ -40,5 +40,8 @@ class BookSpec extends PlaySpec with GuiceOneAppPerTest with Injecting {
       doc.getElementById("1444720724").text mustBe "The Shining"
     }
 
+    "link to a new page for the Jurrasic Park link" in {
+      doc.getElementById("1444720724").attr("href") mustBe "bookdetails/1444720724"
+    }
   }
 }
