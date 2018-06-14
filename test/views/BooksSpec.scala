@@ -29,7 +29,7 @@ class BooksSpec extends PlaySpec with GuiceOneAppPerTest with Injecting {
     }
 
     "check that a second book is on the index page" in {
-      doc.getElementsByTag("li").text must include ("Another Book, Different Author, Some Genre, 111111111")
+     doc.getElementsByTag("li").text must include ("Another Book, Different Author, Some Genre, 111111111")
     }
     "check that the first book is a link" in {
       doc.getElementById("123456789").text mustBe "Test Book"

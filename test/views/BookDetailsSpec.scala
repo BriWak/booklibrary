@@ -2,8 +2,8 @@ package views
 
 import models.Book
 import org.jsoup.Jsoup
-import org.scalatestplus.play.PlaySpec
-import org.scalatestplus.play.guice.GuiceOneAppPerTest
+import org.scalatestplus.play._
+import org.scalatestplus.play.guice._
 import play.api.test.Helpers._
 import play.api.test.Injecting
 
@@ -18,5 +18,17 @@ class BookDetailsSpec extends PlaySpec with GuiceOneAppPerTest with Injecting {
     "have an H1 title" in {
       doc.select("h1").text mustBe "Test Book"
     }
+
+    "have author details shown on the page" in {
+      doc.getElementsByClass("author").text mustBe "Some Author"
+    }
+
+    "have genre shown on the page" in {
+      doc.select("p").text must include ("Genre")
+    }
+    "have isbn shown on the page" in {
+      doc.select("p").text must include ("123456789")
+    }
   }
 }
+
