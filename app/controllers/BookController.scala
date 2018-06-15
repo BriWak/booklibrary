@@ -1,7 +1,7 @@
 package controllers
 
 import com.google.inject.Inject
-import play.api.mvc.{AbstractController, AnyContent, ControllerComponents, Request}
+import play.api.mvc.{AbstractController, ControllerComponents}
 import services.BookService
 
 class BookController @Inject()(bookService: BookService)(cc: ControllerComponents) extends AbstractController(cc) {
@@ -14,7 +14,7 @@ class BookController @Inject()(bookService: BookService)(cc: ControllerComponent
 
   def bookDetails(isbn: String) = Action {
     val book = bookService.book(isbn)
-
-    Ok(views.html.bookdetails(book))
+    val cover = bookService.getCover(isbn)
+    Ok(views.html.bookdetails(book, cover))
   }
 }

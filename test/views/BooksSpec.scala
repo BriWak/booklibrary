@@ -9,8 +9,8 @@ import play.api.test._
 class BooksSpec extends PlaySpec with GuiceOneAppPerTest with Injecting {
 
   val home = views.html.books(List(
-    Book("Test Book", "Some Author", "Genre", 123456789),
-    Book("Another Book", "Different Author", "Some Genre", 111111111)))
+    Book("Test Book", "Some Author", "Genre", "123456789"),
+    Book("Another Book", "Different Author", "Some Genre", "111111111")))
 
   val doc = Jsoup.parse(contentAsString(home)).body()
 
