@@ -1,7 +1,6 @@
 package services
 import connectors._
 import models.Book
-import play.api.libs.json.{JsValue, Json}
 
 
 class BookService {
