@@ -1,5 +1,5 @@
 package services
-
+import connectors._
 import models.Book
 import play.api.libs.json.{JsValue, Json}
 
@@ -17,12 +17,13 @@ class BookService {
   }
 
   def getCover(isbn: String): String = {
-    val url = s"https://www.googleapis.com/books/v1/volumes?q=isbn:$isbn"
-    val result: JsValue = Json.parse(scala.io.Source.fromURL(url).mkString)
-    result \\ "thumbnail" match {
-      case List() => ""
-      case _ => (result \\ "thumbnail").head.as[String]
-    }
+   val connector = new BookDetailsConnector
+   connector.getDetails(isbn, "thumbnail")
+  }
 
+  def getDescription(isbn: String): String = {
+    val connector = new BookDetailsConnector
+    connector.getDetails(isbn, "description",
+      "Sorry the description for this book is unavailable")
   }
 }

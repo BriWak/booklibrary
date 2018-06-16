@@ -9,7 +9,7 @@ import play.api.test.Injecting
 
 class BookDetailsSpec extends PlaySpec with GuiceOneAppPerTest with Injecting {
 
-  val home = views.html.bookdetails(Book("Test Book", "Some Author", "Genre", "123456789"),"CoverURL")
+  val home = views.html.bookdetails(Book("Test Book", "Some Author", "Genre", "123456789"),"CoverURL","Test description")
 
   val doc = Jsoup.parse(contentAsString(home)).body()
 
@@ -33,6 +33,10 @@ class BookDetailsSpec extends PlaySpec with GuiceOneAppPerTest with Injecting {
 
     "show an image of the book cover" in {
       doc.select("img").attr("src") mustBe "CoverURL"
+    }
+
+    "have a book description shown on the page" in {
+      doc.select("p").text must include ("Test description")
     }
   }
 }

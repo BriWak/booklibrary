@@ -1,13 +1,19 @@
-@(book:Book, cover:String)
+@(book:Book, cover:String, description: String)
 
 @main(book.title) {
 <h1>@book.title</h1>
 <div class="author">@book.author</div>
 <img src=@cover alt="Book Cover">
-<h2>Product details:</h2>
+<hr>
+<h2>Product details</h2>
 <p>
     <b>Genre:</b> @book.genre<br>
     <b>ISBN:</b> @book.isbn
-
 </p>
+<hr>
+<h2>Description</h2>
+<p>
+@description
+</p>
+
 }

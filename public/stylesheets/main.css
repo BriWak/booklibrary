@@ -1,7 +1,13 @@
-h1, .author {
+h1 {
   margin-bottom: 0px;
   padding: 0px;
 }
+
+.author {
+  margin-bottom: 20px;
+  padding: 0px;
+}
+
 h1.page-header {
   margin: 0;
   padding: 0;
